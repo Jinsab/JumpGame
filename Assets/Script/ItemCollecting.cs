@@ -5,18 +5,27 @@ using UnityEngine;
 public class ItemCollecting : MonoBehaviour
 {
     bool collecting = false;
+    int s;
+    ScoreManager Manager;
 
-    // Update is called once per frame
+    void Start()
+    {
+        Manager = GameObject.Find("Player").GetComponent<ScoreManager>();
+        s = Manager.score;
+    }
+
     void Update()
     {
         if (collecting)
         {
             Destroy(gameObject);
+            Manager.score++;
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        collecting = true;
+        if (other.CompareTag("Player"))
+            collecting = true;
     }
 }

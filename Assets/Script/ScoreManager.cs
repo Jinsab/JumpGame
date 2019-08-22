@@ -1,20 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    public int score;
+    public int score = 0;
+    public Text scoreCount;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        score = 0;
-    }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.Log("score : " + score);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        scoreCount.text = score.ToString();
     }
 }
