@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController2D controller;
     public Animator animator;
     public Rigidbody2D rigid;
-
+    
     public float runSpeed = 40f;
 
     float horizontalMove = 0f;
@@ -35,9 +35,8 @@ public class PlayerMovement : MonoBehaviour
         {
             crouch = false;
         }
-
     }
-
+    
     public void OnLanding()
     {
         animator.SetBool("IsJumping", false);
@@ -64,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
             if (block.type == "Portal Enter")
             {
                 Vector3 anotherProtalPos = block.portal.transform.position;
-                collision.transform.position = anotherProtalPos;
+                gameObject.transform.position = anotherProtalPos;
             }
         }
     }
