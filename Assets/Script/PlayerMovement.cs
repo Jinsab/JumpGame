@@ -1,20 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController2D controller;
     public Animator animator;
     public Rigidbody2D rigid;
-    
+    public Text message;
     public float runSpeed = 40f;
+    public int life = 1;
 
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
 
-    // Update is called once per frame
+    void Start()
+    {
+        animator.SetInteger("Life", life);
+    }
+
     void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
@@ -36,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
             crouch = false;
         }
     }
-    
+
     public void OnLanding()
     {
         animator.SetBool("IsJumping", false);
@@ -58,12 +64,16 @@ public class PlayerMovement : MonoBehaviour
     {
         BlockStatus block = collision.gameObject.GetComponent<BlockStatus>();
 
-        if (collision.CompareTag("Util Block") && Input.GetKey(KeyCode.E))
+        if (collision.CompareTag("Util Block") && (Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.UpArrow)))
         {
             if (block.type == "Portal Enter")
             {
                 Vector3 anotherProtalPos = block.portal.transform.position;
                 gameObject.transform.position = anotherProtalPos;
+            }
+            else if (block.type == "Clear Door")
+            {
+                message.text = "Clear!";
             }
         }
     }
@@ -80,6 +90,14 @@ public class PlayerMovement : MonoBehaviour
                 //collision.collider.attachedRigidbody.velocity = upVelocity;
                 rigid.velocity = upVelocity;
             }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Monster"))
+        {
+            life--;
         }
     }
 }
