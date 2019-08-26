@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Item
   - Util Block
+  - Monster
   layers:
   - Default
   - TransparentFX

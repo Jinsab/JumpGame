@@ -5,12 +5,14 @@ using UnityEngine;
 public class MonsterMovement : MonoBehaviour
 {
     public int creatureType = 0;
+    public int score;
     public float movePower = 1f;
     GameObject traceTarget;
     Animator animator;
     Vector3 movement;
     int movementFlag = 0;
     bool isTracing = false;
+    bool isDie = false;
 
     void Start()
     {
@@ -128,5 +130,22 @@ public class MonsterMovement : MonoBehaviour
         }
 
         transform.position += moveVelocity * movePower * Time.deltaTime;
+    }
+
+    public void Die()
+    {
+        StopCoroutine("ChangeMovement");
+        isDie = true;
+
+        SpriteRenderer renderer = gameObject.GetComponentInChildren<SpriteRenderer>();
+        renderer.flipY = true;
+
+        BoxCollider2D coll = gameObject.GetComponent<BoxCollider2D>();
+        coll.enabled = false;
+
+        Rigidbody2D rigid = gameObject.GetComponent<Rigidbody2D>();
+        Vector2 dieVelocity = new Vector2(0, 40f);
+
+        Destroy(gameObject, 5f);
     }
 }

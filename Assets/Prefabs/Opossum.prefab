@@ -12,12 +12,11 @@ GameObject:
   - component: {fileID: 2556631737933338045}
   - component: {fileID: 2556631737933338046}
   - component: {fileID: 2556631737933338047}
-  - component: {fileID: 2556631737933338040}
   - component: {fileID: 2556631737933338041}
   - component: {fileID: 2556631737933338035}
   m_Layer: 0
   m_Name: Opossum
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +117,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.014287569, y: -0.0571222}
+  m_Offset: {x: -0.04524526, y: -0.03890243}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -129,24 +128,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1859516, y: 0.14498371}
+  m_Size: {x: 0.24786699, y: 0.18142325}
   m_EdgeRadius: 0
---- !u!58 &2556631737933338040
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2556631737933338042}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.11040373, y: 0.0012982369}
-  serializedVersion: 2
-  m_Radius: 0.050113868
 --- !u!95 &2556631737933338041
 Animator:
   serializedVersion: 3
@@ -179,4 +162,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creatureType: 1
+  score: 0
   movePower: 1

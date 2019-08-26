@@ -17,4 +17,8 @@ public class ScoreManager : MonoBehaviour
 
         scoreCount.text = score.ToString();
     }
+
+    public void SetScore(int value) => score += value;
+
+    public int GetScore() => score;
 }

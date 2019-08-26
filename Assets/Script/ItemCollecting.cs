@@ -5,13 +5,12 @@ using UnityEngine;
 public class ItemCollecting : MonoBehaviour
 {
     bool collecting = false;
-    int s;
+    public int score;
     ScoreManager Manager;
 
     void Start()
     {
         Manager = GameObject.Find("Player").GetComponent<ScoreManager>();
-        s = Manager.score;
     }
 
     void Update()
@@ -19,7 +18,7 @@ public class ItemCollecting : MonoBehaviour
         if (collecting)
         {
             Destroy(gameObject);
-            Manager.score++;
+            Manager.SetScore(score);
         }
     }
 
