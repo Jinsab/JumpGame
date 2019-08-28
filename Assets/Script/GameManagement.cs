@@ -5,24 +5,37 @@ using UnityEngine.SceneManagement;
 
 public class GameManagement : MonoBehaviour
 {
-    float count = 0f;
+    public GameObject player;
 
-    void Update()
+    Vector3 StartingPos;
+    Quaternion StartingRotate;
+    bool isStarted = false;
+    static bool isEnded = false;
+
+    public static int stageLevel = 0;
+
+    void Start()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            count = Time.time;
-        }
+        StartingPos = GameObject.FindGameObjectWithTag("Start").transform.position;
+        StartingRotate = GameObject.FindGameObjectWithTag("Start").transform.rotation;
+    }
 
-        if (Input.GetKeyUp(KeyCode.R))
-        {
-            if (Time.time - count > 2)
-                Restart();
-        }
+    public void NextStage()
+    {
+        //Time.timeScale = 0f;
+       
+        stageLevel++;
+
+        SceneManager.LoadScene(stageLevel+1, LoadSceneMode.Single);
+    }
+
+    public void GoMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene("Stage1");
+        SceneManager.LoadScene(stageLevel, LoadSceneMode.Single);
     }
 }

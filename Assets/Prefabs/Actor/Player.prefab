@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: 6384270029141743325}
   - component: {fileID: 6384270029141743324}
   - component: {fileID: 6384270029141743327}
-  - component: {fileID: 6384270029141743326}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -251,7 +250,14 @@ MonoBehaviour:
   controller: {fileID: 6384270029141743297}
   animator: {fileID: 6384270029141743324}
   rigid: {fileID: 6384270029141743296}
+  stage: {fileID: 0}
+  score: {fileID: 0}
+  oneStar: {fileID: 0}
+  twoStar: {fileID: 0}
+  threeStar: {fileID: 0}
   runSpeed: 40
+  life: 1
+  clear_box: {fileID: 0}
 --- !u!95 &6384270029141743324
 Animator:
   serializedVersion: 3
@@ -285,18 +291,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   scoreCount: {fileID: 0}
---- !u!114 &6384270029141743326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6384270029141743321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2488e3380e0819d4ba88c875592f1fa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6384270029639507221
 GameObject:
   m_ObjectHideFlags: 0

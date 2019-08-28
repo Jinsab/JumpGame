@@ -8,20 +8,24 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController2D controller;
     public Animator animator;
     public Rigidbody2D rigid;
-    public Text message;
+    public Text stage, score;
+    public Image oneStar, twoStar, threeStar;
     public float runSpeed = 40f;
     public int life = 1;
+    public GameObject clear_box;
+
     private Collider2D bxCollider, crCollider;
     private bool over = true;
     private new Renderer renderer;
     ScoreManager Manager;
 
+    static int[,] star_score = new int[2, 3] { { 0, 25, 50 }, { 0, 10, 20 } };
     float unbeatableTime = 0f;
     float deadTime = 0f;
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
-    
+
     void Start()
     {
         animator.SetInteger("Life", life);
@@ -60,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 over = false;
 
-                message.text = "GameOver!" + "\n" + "Press 'R' 3 Second Restart!";
+                //message.text = "GameOver!" + "\n" + "Press 'R' 3 Second Restart!";
 
                 bxCollider.isTrigger = true;
                 crCollider.isTrigger = true;
@@ -108,7 +112,34 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (block.type == "Clear Door")
             {
-                message.text = "Clear!";
+                collision.enabled = false;
+
+                clear_box.SetActive(true);
+
+                score.text = "Score : " + Manager.GetScore();
+
+                if (GameManagement.stageLevel < 10)
+                {
+                    stage.text = "Stage 0" + GameManagement.stageLevel+1;
+                }
+                else
+                {
+                    stage.text = "Stage " + GameManagement.stageLevel+1;
+                }
+
+                if (star_score[GameManagement.stageLevel, 0] < Manager.GetScore())
+                {
+                    oneStar.color = new Color(255, 255, 0, 1f);
+
+                    if (star_score[GameManagement.stageLevel, 1] < Manager.GetScore())
+                    {
+                        twoStar.color = new Color(255, 255, 0, 1f);
+
+                        if (star_score[GameManagement.stageLevel, 2] < Manager.GetScore())
+                            threeStar.color = new Color(255, 255, 0, 1f);
+                    }
+                }
+
             }
         }
     }
