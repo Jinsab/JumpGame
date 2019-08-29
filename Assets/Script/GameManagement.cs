@@ -16,8 +16,11 @@ public class GameManagement : MonoBehaviour
 
     void Start()
     {
-        StartingPos = GameObject.FindGameObjectWithTag("Start").transform.position;
-        StartingRotate = GameObject.FindGameObjectWithTag("Start").transform.rotation;
+        if (player != null)
+        {
+            StartingPos = GameObject.FindGameObjectWithTag("Start").transform.position;
+            StartingRotate = GameObject.FindGameObjectWithTag("Start").transform.rotation;
+        }
     }
 
     public void NextStage()
@@ -34,8 +37,29 @@ public class GameManagement : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    public void Selection()
+    {
+        SceneManager.LoadScene("Selection");
+    }
+
     public void Restart()
     {
-        SceneManager.LoadScene(stageLevel, LoadSceneMode.Single);
+        SceneManager.LoadScene(stageLevel+1, LoadSceneMode.Single);
+    }
+
+    public void Option()
+    {
+        SceneManager.LoadScene("Option");
+    }
+
+    public void Quit()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #elif UNITY_WEBPLAYER
+            Application.OpenURL("http://google.com");
+        #else
+            Application.Quit();
+        #endif
     }
 }
