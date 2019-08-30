@@ -13,11 +13,12 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 40f;
     public int life = 1;
     public GameObject clear_box;
-
+    
     private Collider2D bxCollider, crCollider;
     private bool over = true;
     private new Renderer renderer;
     ScoreManager Manager;
+    StageStatus status;
 
     static int[,] star_score = new int[2, 3] { { 0, 25, 50 }, { 0, 10, 20 } };
     float unbeatableTime = 0f;
@@ -118,13 +119,13 @@ public class PlayerMovement : MonoBehaviour
 
                 score.text = "Score : " + Manager.GetScore();
 
-                if (GameManagement.stageLevel < 10)
+                if (status.score < 10)
                 {
-                    stage.text = "Stage 0" + GameManagement.stageLevel+1;
+                    stage.text = "Stage 0" + status.score;
                 }
                 else
                 {
-                    stage.text = "Stage " + GameManagement.stageLevel+1;
+                    stage.text = "Stage " + status.score;
                 }
 
                 if (star_score[GameManagement.stageLevel, 0] < Manager.GetScore())

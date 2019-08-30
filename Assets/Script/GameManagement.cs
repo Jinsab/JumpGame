@@ -29,7 +29,7 @@ public class GameManagement : MonoBehaviour
        
         stageLevel++;
 
-        SceneManager.LoadScene(stageLevel+1, LoadSceneMode.Single);
+        SceneManager.LoadScene(stageLevel+3, LoadSceneMode.Single);
     }
 
     public void GoMenu()
@@ -44,7 +44,7 @@ public class GameManagement : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(stageLevel+1, LoadSceneMode.Single);
+        SceneManager.LoadScene(stageLevel+3, LoadSceneMode.Single);
     }
 
     public void Option()
