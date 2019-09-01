@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     ScoreManager Manager;
     StageStatus status;
 
-    static int[,] star_score = new int[2, 3] { { 0, 25, 50 }, { 0, 10, 20 } };
+    static int[,] star_score = new int[4, 3] { { 0, 25, 50 }, { 0, 10, 20 } , { 0, 35, 70 }, { 0, 10, 25 } };
     float unbeatableTime = 0f;
     float deadTime = 0f;
     float horizontalMove = 0f;
@@ -108,8 +108,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (block.type == "Portal Enter")
             {
-                Vector3 anotherProtalPos = block.portal.transform.position;
-                gameObject.transform.position = anotherProtalPos;
+                if (block.portal.transform != null)
+                {
+                    Vector3 anotherProtalPos = block.portal.transform.position;
+                    gameObject.transform.position = anotherProtalPos;
+                }
             }
             else if (block.type == "Clear Door")
             {
