@@ -1057,6 +1057,11 @@ PrefabInstance:
       propertyPath: threeStar
       value: 
       objectReference: {fileID: 1044324343}
+    - target: {fileID: 6384270029141743325, guid: a542b2be2610e734aa477f613e3a71da,
+        type: 3}
+      propertyPath: status
+      value: 
+      objectReference: {fileID: 101962347}
     - target: {fileID: 6384270029141743302, guid: a542b2be2610e734aa477f613e3a71da,
         type: 3}
       propertyPath: m_Color.r

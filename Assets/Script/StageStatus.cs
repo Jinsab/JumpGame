@@ -8,6 +8,11 @@ public class StageStatus : MonoBehaviour
     public int stage;
     public int score;
 
+    public int getStage()
+    {
+        return stage;
+    }
+
     public void Stage_Choose()
     {
         SceneManager.LoadScene(stage+2, LoadSceneMode.Single);

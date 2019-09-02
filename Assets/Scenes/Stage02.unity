@@ -27896,6 +27896,11 @@ PrefabInstance:
       propertyPath: clear_box
       value: 
       objectReference: {fileID: 492385623}
+    - target: {fileID: 6384270029141743325, guid: a542b2be2610e734aa477f613e3a71da,
+        type: 3}
+      propertyPath: status
+      value: 
+      objectReference: {fileID: 429348547}
     - target: {fileID: 6384270029141743302, guid: a542b2be2610e734aa477f613e3a71da,
         type: 3}
       propertyPath: m_Color.r
