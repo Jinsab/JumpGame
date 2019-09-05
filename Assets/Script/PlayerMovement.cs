@@ -129,7 +129,7 @@ public class PlayerMovement : MonoBehaviour
                 else
                 {
                     stage.text = "Stage " + status.getStage();
-                }
+                } 
 
                 if (star_score[GameManagement.stageLevel, 0] < Manager.GetScore())
                 {
