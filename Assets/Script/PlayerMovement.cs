@@ -13,14 +13,14 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 40f;
     public int life = 1;
     public GameObject clear_box;
-    public StageStatus status;
+    ScoreManager scoreManager;
+    //public StageStatus status;
 
     private Collider2D bxCollider, crCollider;
     private bool over = true;
     private new Renderer renderer;
-    ScoreManager Manager;
 
-    static int[,] star_score = new int[4, 3] { { 0, 25, 50 }, { 0, 10, 20 } , { 0, 35, 70 }, { 0, 30, 55 } };
+    static int[,] star_score = new int[5, 3] { { 0, 25, 50 }, { 0, 10, 20 } , { 0, 35, 70 }, { 0, 30, 55 }, { 0, 30, 31 } };
     float unbeatableTime = 0f;
     float deadTime = 0f;
     float horizontalMove = 0f;
@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         bxCollider = gameObject.GetComponent<BoxCollider2D>();
         crCollider = gameObject.GetComponent<CircleCollider2D>();
         renderer = gameObject.GetComponent<Renderer>();
-        Manager = gameObject.GetComponent<ScoreManager>();
+        scoreManager = gameObject.GetComponent<ScoreManager>();
     }
 
     void Update()
@@ -57,6 +57,11 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetButtonUp("Crouch"))
         {
             crouch = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            print(GameManagement.stageLevel);
         }
 
         if (life <= 0)
@@ -120,30 +125,29 @@ public class PlayerMovement : MonoBehaviour
 
                 clear_box.SetActive(true);
 
-                score.text = "Score : " + Manager.GetScore();
+                score.text = "Score : " + scoreManager.GetScore();
 
-                if (status.getStage() < 10)
+                if (GameManagement.stageLevel < 10)
                 {
-                    stage.text = "Stage 0" + status.getStage();
+                    stage.text = "Stage 0" + GameManagement.stageLevel;
                 }
                 else
                 {
-                    stage.text = "Stage " + status.getStage();
-                } 
+                    stage.text = "Stage " + GameManagement.stageLevel;
+                }
 
-                if (star_score[GameManagement.stageLevel, 0] < Manager.GetScore())
+                if (star_score[GameManagement.stageLevel, 0] < scoreManager.GetScore() )
                 {
                     oneStar.color = new Color(255, 255, 0, 1f);
 
-                    if (star_score[GameManagement.stageLevel, 1] < Manager.GetScore())
+                    if (star_score[GameManagement.stageLevel, 1] < scoreManager.GetScore())
                     {
                         twoStar.color = new Color(255, 255, 0, 1f);
 
-                        if (star_score[GameManagement.stageLevel, 2] < Manager.GetScore())
+                        if (star_score[GameManagement.stageLevel, 2] < scoreManager.GetScore())
                             threeStar.color = new Color(255, 255, 0, 1f);
                     }
                 }
-
             }
         }
     }
@@ -173,7 +177,7 @@ public class PlayerMovement : MonoBehaviour
             Vector2 KillVelocity = new Vector2(0, 15f);
             rigid.AddForce(KillVelocity, ForceMode2D.Impulse);
 
-            Manager.SetScore(monster.score);
+            scoreManager.SetScore(monster.score);
         }
         else if (collision.collider.CompareTag("Monster") && Time.time - unbeatableTime > 2) // 몬스터에게 부딪히거나 밟지 못해 피격한 경우
         {

@@ -964,6 +964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 183454037}
+  status: {fileID: 1657558677}
 --- !u!4 &400843128
 Transform:
   m_ObjectHideFlags: 0

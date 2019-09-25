@@ -11,7 +11,7 @@ public class GameManagement : MonoBehaviour
     Quaternion StartingRotate;
     bool isStarted = false;
     static bool isEnded = false;
-
+    public StageStatus status;
     public static int stageLevel = 0;
 
     void Start()
@@ -21,8 +21,14 @@ public class GameManagement : MonoBehaviour
             StartingPos = GameObject.FindGameObjectWithTag("Start").transform.position;
             StartingRotate = GameObject.FindGameObjectWithTag("Start").transform.rotation;
         }
+
+        SetStage(status.getStage());
     }
 
+    private void Update()
+    {
+
+    }
     public void NextStage()
     {
         //Time.timeScale = 0f;
@@ -44,7 +50,7 @@ public class GameManagement : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(stageLevel+3, LoadSceneMode.Single);
+        SceneManager.LoadScene(stageLevel+2, LoadSceneMode.Single);
     }
 
     public void Option()
@@ -62,4 +68,15 @@ public class GameManagement : MonoBehaviour
             Application.Quit();
         #endif
     }
+
+    public int GetStage()
+    {
+        return stageLevel;
+    }
+
+    public void SetStage(int stage)
+    {
+        stageLevel = stage;
+    }
+
 }
