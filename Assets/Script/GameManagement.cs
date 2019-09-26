@@ -22,7 +22,10 @@ public class GameManagement : MonoBehaviour
             StartingRotate = GameObject.FindGameObjectWithTag("Start").transform.rotation;
         }
 
-        SetStage(status.getStage());
+        if (status != null)
+        {
+            SetStage(status.getStage());
+        }
     }
 
     private void Update()

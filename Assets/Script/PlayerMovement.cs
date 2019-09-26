@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
@@ -8,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController2D controller;
     public Animator animator;
     public Rigidbody2D rigid;
-    public Text stage, score;
+    public Text stage, score, message;
     public Image oneStar, twoStar, threeStar;
     public float runSpeed = 40f;
     public int life = 1;
@@ -20,7 +21,8 @@ public class PlayerMovement : MonoBehaviour
     private bool over = true;
     private new Renderer renderer;
 
-    static int[,] star_score = new int[5, 3] { { 0, 25, 50 }, { 0, 10, 20 } , { 0, 35, 70 }, { 0, 30, 55 }, { 0, 30, 31 } };
+    static int[,] star_score = new int[10, 3] { { 0, 25, 50 }, { 0, 10, 20 }, { 0, 35, 70 }, { 0, 30, 55 }, { 0, 30, 31 }, 
+                                                { 0, 15, 30 }, { 0, 40, 41 }, { 0, 50, 100 }, { 0, 8, 11 }, { 0, 10, 10 } };
     float unbeatableTime = 0f;
     float deadTime = 0f;
     float horizontalMove = 0f;
@@ -70,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 over = false;
 
-                //message.text = "GameOver!" + "\n" + "Press 'R' 3 Second Restart!";
+                message.text = "GameOver!" + "\n" + "Press 'R' Restart!";
 
                 bxCollider.isTrigger = true;
                 crCollider.isTrigger = true;
@@ -84,6 +86,11 @@ public class PlayerMovement : MonoBehaviour
             if (Time.time - deadTime > 2)
             {
                 rigid.gravityScale = 3;
+            }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(GameManagement.stageLevel + 2, LoadSceneMode.Single);
             }
         }
     }
@@ -136,15 +143,15 @@ public class PlayerMovement : MonoBehaviour
                     stage.text = "Stage " + GameManagement.stageLevel;
                 }
 
-                if (star_score[GameManagement.stageLevel, 0] < scoreManager.GetScore() )
+                if (star_score[GameManagement.stageLevel-1, 0] < scoreManager.GetScore() )
                 {
                     oneStar.color = new Color(255, 255, 0, 1f);
 
-                    if (star_score[GameManagement.stageLevel, 1] < scoreManager.GetScore())
+                    if (star_score[GameManagement.stageLevel-1, 1] < scoreManager.GetScore())
                     {
                         twoStar.color = new Color(255, 255, 0, 1f);
 
-                        if (star_score[GameManagement.stageLevel, 2] < scoreManager.GetScore())
+                        if (star_score[GameManagement.stageLevel-1, 2] < scoreManager.GetScore())
                             threeStar.color = new Color(255, 255, 0, 1f);
                     }
                 }
