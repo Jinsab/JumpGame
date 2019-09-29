@@ -12,7 +12,7 @@ public class GameManagement : MonoBehaviour
     bool isStarted = false;
     static bool isEnded = false;
     public StageStatus status;
-    public static int stageLevel = 0;
+    public static int stageLevel = 1;
 
     void Start()
     {
@@ -36,8 +36,6 @@ public class GameManagement : MonoBehaviour
     {
         //Time.timeScale = 0f;
        
-        stageLevel++;
-
         SceneManager.LoadScene(stageLevel+3, LoadSceneMode.Single);
     }
 
