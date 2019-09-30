@@ -40,7 +40,7 @@ public class DataJson : MonoBehaviour
     {
         Debug.Log("불러오기");
 
-        string JsonString = File.ReadAllText(Application.dataPath + "/Resources/ItemData.sjon");
+        string JsonString = File.ReadAllText(Application.dataPath + "/Resources/ItemData.json");
 
         Debug.Log(JsonString);
 
