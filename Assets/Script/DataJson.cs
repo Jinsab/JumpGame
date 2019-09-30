@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using LitJson;
-using System.IO;
 
 public class Stage
 {
-    public int StageNumber;
+    public string StageNumber;
     public int Score;
     public int Star;
 
-    public Stage(int stageNumber, int score, int star)
+    public Stage(string stageNumber, int score, int star)
     {
         StageNumber = stageNumber;
         Score = score;
@@ -20,37 +19,17 @@ public class Stage
 
 public class DataJson : MonoBehaviour
 {
-    public List<Stage> StageList = new List<Stage>();
-
+    
+    
+    // Start is called before the first frame update
     void Start()
     {
-        StageList.Add(new Stage(1, 51, 3));
+        
     }
 
-    public void Save()
+    // Update is called once per frame
+    void Update()
     {
-        Debug.Log("저장하기");
-
-        JsonData StageJson = JsonMapper.ToJson(StageList);
-
-        File.WriteAllText(Application.dataPath + "/Stagedata.json", StageJson.ToString());
-    }
-
-    public void Load()
-    {
-        Debug.Log("불러오기");
-
-        string JsonString = File.ReadAllText(Application.dataPath + "/Resources/ItemData.sjon");
-
-        Debug.Log(JsonString);
-
-        JsonData StageData = JsonMapper.ToObject(JsonString);
-
-        for (int i = 0; i < StageData.Count; i++)
-        {
-            Debug.Log(StageData[i]["StageNumber"].ToString());
-            Debug.Log(StageData[i]["Score"].ToString());
-            Debug.Log(StageData[i]["Star"].ToString());
-        }
+        
     }
 }
