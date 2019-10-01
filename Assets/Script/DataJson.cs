@@ -24,7 +24,7 @@ public class DataJson : MonoBehaviour
 
     void Start()
     {
-        StageList.Add(new Stage(1, 51, 3));
+        //StageList.Add(new Stage(1, 51, 3));
     }
 
     public void Save()
