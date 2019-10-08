@@ -134,6 +134,7 @@ public class PlayerMovement : MonoBehaviour
 
                 score.text = "Score : " + scoreManager.GetScore();
 
+
                 if (GameManagement.stageLevel < 10)
                 {
                     stage.text = "Stage 0" + GameManagement.stageLevel;
