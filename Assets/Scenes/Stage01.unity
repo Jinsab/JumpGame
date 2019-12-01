@@ -17284,7 +17284,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -18512,7 +18512,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Clear_Box
       objectReference: {fileID: 0}
+    - target: {fileID: 5499117907101323092, guid: f9a84d07c53d8f54e916fcc902e7f88b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5499117906809584762, guid: f9a84d07c53d8f54e916fcc902e7f88b,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5499117906782726527, guid: f9a84d07c53d8f54e916fcc902e7f88b,
         type: 3}
       propertyPath: m_Text
       value: 
@@ -18585,12 +18595,12 @@ PrefabInstance:
     - target: {fileID: 5499117907101323093, guid: f9a84d07c53d8f54e916fcc902e7f88b,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 525
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 5499117907101323093, guid: f9a84d07c53d8f54e916fcc902e7f88b,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 275
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 5499117907101323093, guid: f9a84d07c53d8f54e916fcc902e7f88b,
         type: 3}
@@ -18637,6 +18647,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1855005268}
+    - target: {fileID: 5499117906782726526, guid: f9a84d07c53d8f54e916fcc902e7f88b,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 160
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9a84d07c53d8f54e916fcc902e7f88b, type: 3}
 --- !u!1001 &6266321793930128712

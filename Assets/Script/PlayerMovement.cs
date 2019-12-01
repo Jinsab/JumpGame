@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public Text stage, score, message;
     public Image oneStar, twoStar, threeStar;
     public float runSpeed = 40f;
+    public float dieZone = -100f;
     public int life = 1;
     public GameObject clear_box;
     ScoreManager scoreManager;
@@ -110,6 +111,11 @@ public class PlayerMovement : MonoBehaviour
         // Move our character
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
         jump = false;
+
+        if (transform.position.y < dieZone)
+        {
+
+        }
     }
 
     void OnTriggerStay2D(Collider2D collision)
