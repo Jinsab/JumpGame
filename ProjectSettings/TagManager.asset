@@ -8,6 +8,7 @@ TagManager:
   - Util Block
   - Monster
   - Start
+  - DeathZone
   layers:
   - Default
   - TransparentFX
