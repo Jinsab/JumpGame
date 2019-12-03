@@ -93,6 +93,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 SceneManager.LoadScene(GameManagement.stageLevel + 2, LoadSceneMode.Single);
             }
+
+			if(Time.time - deadTime > 4)
+			{
+				SceneManager.LoadScene(GameManagement.stageLevel + 2, LoadSceneMode.Single);
+			}
         }
     }
 
@@ -111,14 +116,16 @@ public class PlayerMovement : MonoBehaviour
         // Move our character
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
         jump = false;
-
-        if (transform.position.y < dieZone)
-        {
-
-        }
     }
 
-    void OnTriggerStay2D(Collider2D collision)
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.CompareTag("DeathZone")) {
+			life = 0;
+		}
+	}
+
+	void OnTriggerStay2D(Collider2D collision)
     {
         BlockStatus block = collision.gameObject.GetComponent<BlockStatus>();
 
